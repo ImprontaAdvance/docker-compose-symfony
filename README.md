@@ -29,6 +29,7 @@ A new symfony app will be installed in `app` directory.
 Before build this image, copy `.env.dist` in `.env` and check configuration you want.
 
 ### .env parameters
+- `DCSF_PHP_DISPLAY_ERROR=On` enable/disable errors
 - `DCSF_MYSQL=1` installs `pdo pdo_mysql` extensions
 - `DCSF_XDEBUG=1` installs `xdebug` with `default_enable=1`
 - `DCSF_XDEBUG_HOST` [see XDebug on Mac](#xdebug-on-mac)
