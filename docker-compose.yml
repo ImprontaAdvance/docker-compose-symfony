@@ -11,6 +11,7 @@ services:
     environment:
       TIMEZONE: Europe/Rome
       XDEBUG_HOST: ${DCSF_XDEBUG_HOST}
+      SYMFONY_VERSION: ${DCSF_SF_VER}
     links:
       - mysql:mysqldb
     volumes:
