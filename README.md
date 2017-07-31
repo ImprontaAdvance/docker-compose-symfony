@@ -30,4 +30,6 @@ Inside docker container, the only way to communicate with xdebug is with static 
 DCSF_XDEBUG_HOST=10.254.254.254
 ```
 
+Credits: [https://gist.github.com/chadrien/c90927ec2d160ffea9c4](https://gist.github.com/chadrien/c90927ec2d160ffea9c4)
+
 **Linux platform:** To be tested
