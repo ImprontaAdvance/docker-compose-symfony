@@ -9,7 +9,7 @@ services:
         - xdebug=${DCSF_XDEBUG}
         - gd=${DCSF_GD}
     environment:
-      TIMEZONE: Europe/Rome
+      TIMEZONE: ${DCSF_TIMEZONE}
       DISPLAY_ERRORS: ${DCSF_PHP_DISPLAY_ERRORS}
       XDEBUG_HOST: ${DCSF_XDEBUG_HOST}
       SYMFONY_VERSION: ${DCSF_SF_VER}
