@@ -1,8 +1,11 @@
 #!/bin/bash
 if [ ! -f /var/www/app/composer.json ]
 then
+    # Create new symfony app and configure database_host
     symfony new /tmp/app \
         && cp -R /tmp/app /var/www \
+        && sed -i "s/database_host:.*/database_host: mysqldb/g" /var/www/app/app/config/parameters.yml.dist \
+        && sed -i "s/database_host:.*/database_host: mysqldb/g" /var/www/app/app/config/parameters.yml \
         && echo "New symfony app installed!"
     rm -rf /tmp/app
 else

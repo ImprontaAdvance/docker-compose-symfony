@@ -11,12 +11,22 @@ services:
     environment:
       TIMEZONE: Europe/Rome
       XDEBUG_HOST: ${DCSF_XDEBUG_HOST}
+    links:
+      - mysql:mysqldb
     volumes:
       - ./dockers/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./app:/var/www/app
       - ./app/vendor:/var/www/app/vendor:cached
       - ./app/var/cache:/var/www/app/var/cache:cached
       - ./app/var/logs:/var/www/app/var/logs:cached
+
+  mysql:
+    image: mariadb
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=symfony
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 
   webserver:
     image: nginx:1.11
@@ -28,3 +38,6 @@ services:
       - ./dockers/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - 8080:80
+
+volumes:
+  db: {}
