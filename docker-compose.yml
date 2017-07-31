@@ -1,0 +1,30 @@
+version: '2'
+
+services:  
+  php:
+    build:
+      context: ./dockers/php
+      args:
+        - mysql=${DCSF_MYSQL}
+        - xdebug=${DCSF_XDEBUG}
+        - gd=${DCSF_GD}
+    environment:
+      TIMEZONE: Europe/Rome
+      XDEBUG_HOST: ${DCSF_XDEBUG_HOST}
+    volumes:
+      - ./dockers/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./app:/var/www/app
+      - ./app/vendor:/var/www/app/vendor:cached
+      - ./app/var/cache:/var/www/app/var/cache:cached
+      - ./app/var/logs:/var/www/app/var/logs:cached
+
+  webserver:
+    image: nginx:1.11
+    depends_on:
+      - php
+    volumes_from:
+      - php
+    volumes:
+      - ./dockers/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 8080:80
