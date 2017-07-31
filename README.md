@@ -1,6 +1,15 @@
 # docker-compose for Symfony env
 
-Out of the box symfony environment using docker-compose.
+Out of the box symfony environment using docker-compose. It contains:
+- PHP-FPM optimized
+- nginx as web server
+- MariaDB as mysql-like server
+- XDebug (optional)
+- GD libraries (optional)
+
+After [setup](#setup), run `docker-compose up` and go to [localhost:8080](http://localhost:8080).
+
+If `app` directory doesn't contain a Symfony app, a new one is created.
 
 ## Setup
 Before build this image, copy `.env.dist` in `.env` and check configuration you want.
