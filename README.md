@@ -7,9 +7,23 @@ Out of the box symfony environment using docker-compose. It contains:
 - XDebug (optional)
 - GD libraries (optional)
 
-After [setup](#setup), run `docker-compose up` and go to [localhost:8080](http://localhost:8080).
+## Installation
+### New project
+1. `curl -L https://goo.gl/b5vtmq | bash -s TARGET_DIR`
+    
+    where `TARGET_DIR` is your new project directory.
+1. [setup](#setup) your env
+1. `docker-compose up`
+1. Open [localhost:8080](http://localhost:8080)
 
-If `app` directory doesn't contain a Symfony app, a new one is created.
+A new symfony app will be installed in `app` directory.
+
+### Existing Project
+1. Clone this repo
+1. Put your symfony app contents in `app` directory
+1. [setup](#setup) your env
+1. `docker-compose up`
+1. Open [localhost:8080](http://localhost:8080)
 
 ## Setup
 Before build this image, copy `.env.dist` in `.env` and check configuration you want.
