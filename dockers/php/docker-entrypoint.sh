@@ -31,7 +31,13 @@ then
     sed -i "s/xdebug\.remote_host \=.*/xdebug\.remote_host\=$HOST/g" /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
-# Fix cache permission
-chmod -R 777 var/cache
+# Fix cache/logs/session permission based on symfony version
+# Symfony 3.x+
+if [ -f bin/console ]; then
+    chmod -R 777 var/cache var/logs var/sessions
+else
+#Symfony 2.x
+    chmod -R 777 app/cache app/logs
+fi
 
 exec $@
