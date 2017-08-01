@@ -38,13 +38,23 @@ Before build this image, copy `.env.dist` in `.env` and check configuration you 
 
 These variables are used building time. If you want to enable/disable after first run, you have to rebuild it: `docker-compose build php`.
 
+## Docker for Mac
+
+Docker for Mac has still big problems of slowness with shared volumes (Ref. [docker/for-mac#77](https://github.com/docker/for-mac/issues/77)). To fast up your symfony, remove comments in `docker-compose.yml` and use `cached` volumes (Ref: [docker.com/osxfs-caching/](https://docs.docker.com/docker-for-mac/osxfs-caching/))
+
+```
+- ./app/vendor:/var/www/app/vendor:cached
+- ./app/var/cache:/var/www/app/var/cache:cached
+- ./app/var/logs:/var/www/app/var/logs:cached
+```
+
 ### XDebug on Mac
 Inside docker container, the only way to communicate with xdebug is with static ip (ref. [xdebug/remote#communication](https://xdebug.org/docs/remote#communication)).
 
 Docker for Mac uses a VM as host for docker containers. To be reached, you xdebug server must be visible from php container.
 In Docker for Mac 17.06+, it works using `docker.for.mac.localhost` hostname.
 
-If you're using Docker for Mac 17.05 or below, you have to create an alias to your local IP: `sudo ifconfig lo0 alias 10.254.254.254`. Then put aliased IP to `.env` file:
+If you're using Docker for Mac 17.05 or below, please [update](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac). If you can't, you have to create an alias to your local IP: `sudo ifconfig lo0 alias 10.254.254.254`. Then put aliased IP to `.env` file:
 ```
 DCSF_XDEBUG_HOST=10.254.254.254
 ```
