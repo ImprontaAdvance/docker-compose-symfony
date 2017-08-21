@@ -25,7 +25,7 @@ create_project() {
 # @param string directory
 #
 clear_directory() {
-    declare -a arr=("README.md" ".gitignore")
+    declare -a arr=("README.md" ".gitignore" "create-project.sh")
 
     for i in "${arr[@]}"
     do
