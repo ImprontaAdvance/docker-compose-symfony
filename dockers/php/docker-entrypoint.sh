@@ -25,7 +25,7 @@ then
 
     # else get host ip
     if [ -z "$HOST" ]; then
-        HOST=${/sbin/ip route|awk '/default/ { print $3 }'}
+        HOST=`/sbin/ip route|awk '/default/ { print $3 }'`
     fi
 
     sed -i "s/xdebug\.remote_host \=.*/xdebug\.remote_host\=$HOST/g" /usr/local/etc/php/conf.d/xdebug.ini
