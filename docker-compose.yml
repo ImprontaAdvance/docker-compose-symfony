@@ -18,10 +18,9 @@ services:
     volumes:
       - ./dockers/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./app:/var/www/app
-      # Remove comments on Docker for Mac
-      # - ./app/vendor:/var/www/app/vendor:cached
-      # - ./app/var/cache:/var/www/app/var/cache:cached
-      # - ./app/var/logs:/var/www/app/var/logs:cached
+      - ./app/vendor:/var/www/app/vendor:cached
+      - ./app/var/cache:/var/www/app/var/cache:cached
+      - ./app/var/logs:/var/www/app/var/logs:cached
 
   mysql:
     image: mariadb

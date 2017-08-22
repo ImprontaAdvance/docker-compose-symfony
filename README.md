@@ -7,6 +7,11 @@ Out of the box symfony environment using docker-compose. It contains:
 - XDebug (optional)
 - GD libraries (optional)
 
+### Requirements
+
+* Docker >=17.04
+* docker-compose >= 1.8.0
+
 ## Installation
 ### New project
 1. `curl -L https://goo.gl/b5vtmq | bash -s TARGET_DIR`
@@ -40,7 +45,7 @@ These variables are used building time. If you want to enable/disable after firs
 
 ## Docker for Mac
 
-Docker for Mac has still big problems of slowness with shared volumes (Ref. [docker/for-mac#77](https://github.com/docker/for-mac/issues/77)). To fast up your symfony, remove comments in `docker-compose.yml` and use `cached` volumes (Ref: [docker.com/osxfs-caching/](https://docs.docker.com/docker-for-mac/osxfs-caching/))
+Docker for Mac has still big problems of slowness with shared volumes (Ref. [docker/for-mac#77](https://github.com/docker/for-mac/issues/77)). In the `docker-compose.yml` file the tool configures the volumes as `cached` (Ref: [docker.com/osxfs-caching/](https://docs.docker.com/docker-for-mac/osxfs-caching/)) to [improve the speed of the framework](https://blog.docker.com/2017/05/user-guided-caching-in-docker-for-mac/).
 
 ```
 - ./app/vendor:/var/www/app/vendor:cached
