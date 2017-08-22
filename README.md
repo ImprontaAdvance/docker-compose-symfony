@@ -61,6 +61,32 @@ DCSF_XDEBUG_HOST=10.254.254.254
 
 Credits: [https://gist.github.com/chadrien/c90927ec2d160ffea9c4](https://gist.github.com/chadrien/c90927ec2d160ffea9c4)
 
+## VSCode debugger integration
+
+The recommended way to debug on VSCode is the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug).
+In the `.vscode` folder there's already the debugger configuration ready to use: go to the debugger section and click on `Listen for XDebug`.
+
+### VSCode workspaces
+
+If you're using VSCode with the workspaces enabled you need to tweak a little bit the configuration:
+
+* First copy the content of the `Listen for XDebug` and `Launch currently open script` JSONs in your `launch.json` file in the workspace root folder.
+* Then change the `localSourceRoot` field as shown below:
+
+```json
+"localSourceRoot": "${workspaceRoot}/app"
+
+-> 
+
+"localSourceRoot": "${workspaceRoot}/<project-path>/app"
+```
+
+Change `<project-path>` with your current project path from the workspace.
+
+## Atom debugger integration
+
+// TODO
+
 ## MIT License
 
 Copyright (c) 2017 Impronta Advance srl
