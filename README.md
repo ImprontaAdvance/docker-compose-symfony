@@ -48,9 +48,7 @@ These variables are used building time. If you want to enable/disable after firs
 Docker for Mac has still big problems of slowness with shared volumes (Ref. [docker/for-mac#77](https://github.com/docker/for-mac/issues/77)). In the `docker-compose.yml` file the tool configures the volumes as `cached` (Ref: [docker.com/osxfs-caching/](https://docs.docker.com/docker-for-mac/osxfs-caching/)) to [improve the speed of the framework](https://blog.docker.com/2017/05/user-guided-caching-in-docker-for-mac/).
 
 ```
-- ./app/vendor:/var/www/app/vendor:cached
-- ./app/var/cache:/var/www/app/var/cache:cached
-- ./app/var/logs:/var/www/app/var/logs:cached
+- ./app:/var/www/app:cached
 ```
 
 ### XDebug on Mac
