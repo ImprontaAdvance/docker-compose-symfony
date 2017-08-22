@@ -17,10 +17,7 @@ services:
       - mysql:mysqldb
     volumes:
       - ./dockers/php/php.ini:/usr/local/etc/php/php.ini:ro
-      - ./app:/var/www/app
-      - ./app/vendor:/var/www/app/vendor:cached
-      - ./app/var/cache:/var/www/app/var/cache:cached
-      - ./app/var/logs:/var/www/app/var/logs:cached
+      - ./app:/var/www/app:cached
 
   mysql:
     image: mariadb
